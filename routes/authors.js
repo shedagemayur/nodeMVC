@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
 
     try {
         const newAuthor = await author.save()
-        res.redirect(`authors/${newAthour.id}`);
+        res.redirect(`authors/${newAuthor.id}`);
     } catch {
         res.render('authors/new', {
             author: author,
@@ -70,9 +70,9 @@ router.put('/:id', async (req, res) => {
         await author.save()
         res.redirect(`/authors/${author.id}`);
     } catch {
-        if(author == null) {
+        if (author == null) {
             res.redirect('/')
-        }else {
+        } else {
             res.render('authors/edit', {
                 author: author,
                 errorMessage: 'Error updating author'
@@ -89,9 +89,9 @@ router.delete('/:id', async (req, res) => {
         await author.remove()
         res.redirect('/authors');
     } catch {
-        if(author == null) {
+        if (author == null) {
             res.redirect('/')
-        }else {
+        } else {
             res.redirect(`/authors/${author.id}`);
         }
     }
